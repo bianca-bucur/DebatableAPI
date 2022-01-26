@@ -24,5 +24,8 @@ namespace DebatableAPI.Models
 
     [BsonElement("points")]
     public int Points { get; set; }
+
+    [BsonElement("role")]
+    public Role Role { get; set; }
   }
 }

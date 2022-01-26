@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using DebatableAPI.Authorization;
 using DebatableAPI.Models;
 using DebatableAPI.Requests;
 using DebatableAPI.Services;
@@ -8,6 +9,7 @@ using System.Security.Claims;
 
 namespace DebatableAPI.Controllers
 {
+  [Authorize]
   [Route("api/[controller]")]
   [ApiController]
   public class UsersController : ControllerBase
@@ -23,7 +25,7 @@ namespace DebatableAPI.Controllers
     public ActionResult<List<User>> Get() =>
       _userService.Get();
 
-    [HttpGet("{id:length(24)}", Name = "GetUser")]
+    [HttpGet("{username}", Name = "GetUser")]
     public ActionResult<User> Get(string username)
     {
       var user = _userService.Get(username);
@@ -36,7 +38,7 @@ namespace DebatableAPI.Controllers
       return Ok(user);  
     }
 
-    [HttpPost(Name ="newUser")]
+    [HttpPost(Name ="NewUser")]
     public ActionResult<User> Create(User user)
     {
       _userService.Create(user);

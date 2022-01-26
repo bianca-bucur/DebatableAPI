@@ -10,13 +10,16 @@ namespace DebatableAPI.Services
   public class UserService : IUserService
   {
     private readonly IMongoCollection<User> _users;
-    
+
     public UserService(IDebatableDatabaseSettings settings)
     {
       var client = new MongoClient(settings.ConnectionString);
       var database = client.GetDatabase(settings.DatabaseName);
 
       _users=database.GetCollection<User>(settings.UsersCollectionName);  
+      
+      var options = new CreateIndexOptions {  Unique = true};
+      _users.Indexes.CreateOne("{username: 1}", options);
     }
 
     public List<User> Get()=> 
