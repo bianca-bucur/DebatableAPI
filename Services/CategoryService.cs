@@ -27,6 +27,7 @@ namespace DebatableAPI.Services
     public Category Create(Category category)
     {
       _categories.InsertOne(category);
+
       return category;      
     }
 
