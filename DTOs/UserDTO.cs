@@ -4,6 +4,5 @@
   {
     public string Nickname { get; set; }  
     public int Points { get; set; }
-
   }
 }

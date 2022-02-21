@@ -13,8 +13,10 @@ namespace DebatableAPI.Models
 
     [BsonElement("username")]
     public string Username { get; set; }
+
     [BsonElement("password")]
     public string Password { get; set; }
+
     [BsonElement("nickname")]
     public string Nickname { get; set; }
 
@@ -23,9 +25,13 @@ namespace DebatableAPI.Models
     public string Email { get; set; }
 
     [BsonElement("points")]
-    public int Points { get; set; }
+    public int Points { get; set; } = 0;
 
     [BsonElement("role")]
     public Role Role { get; set; }
+
+    [BsonRepresentation(BsonType.DateTime)]
+    [BsonElement("createdDate")]
+    public DateTime? CreatedDate { get; set; } = DateTime.UtcNow;
   }
 }

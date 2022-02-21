@@ -15,6 +15,8 @@ namespace DebatableAPI.Controllers
       _categoryService = categoryService;
     }
 
+    #region Categories
+
     [HttpGet]
     public ActionResult<List<Category>> Get() =>
       _categoryService.Get();
@@ -69,5 +71,19 @@ namespace DebatableAPI.Controllers
 
       return NoContent();
     }
+
+    #endregion
+
+    #region Topics
+
+    [HttpPost("{name}")]
+    public ActionResult<Topic> Create(string categoryName, Topic topic)
+    {
+      _categoryService.Create(categoryName, topic);
+
+      return Ok();
+    }
+
+    #endregion
   }
 }

@@ -2,6 +2,7 @@
 using DebatableAPI.Services;
 using Microsoft.Extensions.Options;
 using AutoMapper;
+using DebatableAPI.DTOs;
 
 namespace DebatableAPI.Profiles
 {
@@ -11,6 +12,7 @@ namespace DebatableAPI.Profiles
     {
       CreateMap<UserDTO, User>();
       CreateMap<User, UserDTO>();
+      CreateMap<NewUserDTO, User>();
     }
   }
 }
